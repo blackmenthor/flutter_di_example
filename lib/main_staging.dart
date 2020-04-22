@@ -9,7 +9,7 @@ import 'package:flutter_di_example/environment_config.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   var config = EnvironmentConfig(
-      environment: Environment.production,
+      environment: Environment.staging,
       appName: "My App Staging",
       apiUrl: "https://mywebservice.staging.com/api/v1"
   );
