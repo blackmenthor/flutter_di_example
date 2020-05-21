@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter_di_example/app/my_app.dart';
+import 'package:flutter_di_example/my_app.dart';
 import 'package:flutter_di_example/di/injector.dart' as Injector;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
