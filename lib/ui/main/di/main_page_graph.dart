@@ -1,5 +1,5 @@
 import 'package:flutter_di_example/di/injectable_widget.dart';
-import 'package:flutter_di_example/environment_config.dart';
+import 'package:flutter_di_example/di/injector.dart';
 import 'package:flutter_di_example/ui/main/main_page.dart';
 import 'package:injector/injector.dart';
 
@@ -9,6 +9,7 @@ class MainPageGraph extends Graph<MainPage> {
 
   @override
   void inject(MainPage subject) {
+    subject.globalString = getDependency<String>(dependencyName: GLOBAL_STRING_DEP_NAME);
     subject.localString = getDependency<String>(dependencyName: MainPageGraph.localStringTag);
   }
 
@@ -17,10 +18,7 @@ class MainPageGraph extends Graph<MainPage> {
   void register() {
     registerDependency<String>(
             (Injector injector) {
-              final environment = injector.getDependency<EnvironmentConfig>();
-              return environment.environment == Environment.production
-                  ? "This is an injected string in Production"
-                  : "This is an injected String in Staging";
+              return "This is an injected Local Dependencies";
             },
             dependencyName: MainPageGraph.localStringTag
     );

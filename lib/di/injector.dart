@@ -1,8 +1,10 @@
-import 'package:flutter_di_example/environment_config.dart';
 import 'package:injector/injector.dart';
 
-inject(EnvironmentConfig config) {
+inject() {
   final Injector injector = Injector.appInstance;
 
-  injector.registerSingleton<EnvironmentConfig>((_) => config);
+  injector.registerSingleton<String>((Injector injector) => "This is a Global Dependency",
+      dependencyName: GLOBAL_STRING_DEP_NAME);
 }
+
+const String GLOBAL_STRING_DEP_NAME = "Global_String";
